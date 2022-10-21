@@ -918,7 +918,17 @@ a.w3_agile_vimeo:hover{
     width: 100%;
     margin:1em 0 0;
 }
-
+.login-form-grids select
+{
+    outline: none;
+    border: 1px solid #DBDBDB;
+    padding: 10px 10px 10px 10px;
+    font-size: 14px;
+    color: #999;
+    display: block;
+    width: 100%;
+    margin:1em 0 0;
+}
 .login-form-grids input[type="password"]{
 	margin:1em 0 0;
 }

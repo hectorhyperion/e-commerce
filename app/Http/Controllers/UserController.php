@@ -6,6 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserTypes;
+use Illuminate\Validation\Rules\Exists;
+use log;
+
 
 class UserController extends Controller
 {
@@ -16,11 +20,15 @@ class UserController extends Controller
             'name' =>'required|min:3',
             'email' =>['required', 'email', Rule::unique('users','email')],
             'phone'=>'required',
+            'usertype'=>'required',
             'password' => 'required|confirmed|min:6|max:16'
             
         ]);
         //hash password
         $data['password'] = bcrypt($data['password']);
+        //setting admin and user login fucntion
+      
+        
         $user = User::create($data);
 
         //login 

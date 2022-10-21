@@ -36,10 +36,23 @@
                         <div class="alert text-danger">{{$message}}</div>    
                           @enderror
 
+                      <select name="usertype" id="" class="login-form-grid">
+                            <option value="">Select Account Type</option>
+                            @foreach ($user as $user)
+                                  <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                          
+                          </select>
+                          @error('usertype')
+                          <div class="alert text-danger">{{$message}}</div>    
+                            @enderror
+                            
                         <input type="password" placeholder="Password" name="password">
                         @error('password')
                         <div class="alert text-danger">{{$message}}</div>    
                           @enderror
+
+                        
 
                         <input type="password" placeholder="confirm_password" name="password_confirmation">
                       
