@@ -46,9 +46,13 @@ class UserController extends Controller
         if (auth()->attempt($data)) {
             $request->session()->regenerate();
             if (Auth::id()) {
-               if (Auth::user()) {
-                return redirect('/');
-               }
+                if(Auth::user()->usertype=='1')
+                {
+                   return redirect('admin/Index');
+                }
+                else{
+                   return redirect('users/dashboard');
+                }
             }
         }
         return back()->withErrors(['errors'=>'Invalid Credentials']);
