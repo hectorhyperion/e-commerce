@@ -43,7 +43,7 @@
                 <tr class="table-dark">
                 <td>{{$no++}}</td>
             <td>{{$item->category_name}}</td>
-            <td><a href="/category_edit/{{$item->id}}" class="btn btn-primary">Edit</a>  <a href="/category_delete/{{$item->id}}" class="btn btn-danger">Delete</a></td>
+            <td><a href="/category_edit/{{$item->id}}" class="btn btn-primary">Edit</a>  <a href="/category_delete/{{$item->id}}" class="btn btn-danger" onclick="return confirm('Are You Sure You Want To Delete This?')">Delete</a></td>
                  </tr>
                  @endforeach
 

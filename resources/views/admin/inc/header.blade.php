@@ -29,11 +29,11 @@
           </li>
           <li class="menu-list">
             <a href="#"><i class="fa fa-cogs"></i>
-              <span>Elements <i class="lnr lnr-chevron-right"></i></span></a>
+              <span>Products <i class="lnr lnr-chevron-right"></i></span></a>
             <ul class="sub-menu-list">
-              <li><a href="carousels.html">Carousels</a> </li>
-              <li><a href="cards.html">Default cards</a> </li>
-              <li><a href="people.html">People cards</a></li>
+              <li><a href="/addProduct">Add Product</a> </li>
+              <li><a href="/showProduct">Show Product</a> </li>
+            
             </ul>
           </li>
           <li><a href="/Category"><i class="fa fa-table"></i> <span>Category</span></a></li>

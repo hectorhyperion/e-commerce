@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Products;
 use App\Models\UserTypes;
 use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
@@ -54,6 +56,23 @@ class PagesController extends Controller
         {
                        $data = Category::find($id);
                     return view('admin.edit_category',compact('data'));
+        }
+        public function addProduct()
+        {
+            $data = Category::all();
+            return view('admin.addProduct',compact('data'));
+        }
+        //show product page
+        public function showProduct()
+        {
+            $data = Products::orderBy('created_at', 'asc')->paginate(15);
+            return view('admin.showProduct',compact('data'))->with('no', 1);
+        }
+        public function editProduct($id )
+        {    
+            $data= Products::find($id);
+            $arr= Category::all();
+            return view('admin.editProduct',compact('data','arr'));
         }
 }
 
