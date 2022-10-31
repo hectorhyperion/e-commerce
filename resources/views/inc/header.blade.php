@@ -2,7 +2,7 @@
 <div class="agileits_header">
     <div class="container">
         <div class="w3l_offers">
-            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
+            <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="/product">SHOP NOW</a></p>
         </div>
         <div class="agile-login">
               <ul>
@@ -13,18 +13,18 @@
                 <li><a href="/Register"> Create Account </a></li>
                 <li><a href="/Login">Login</a></li>
             @endauth
-          
-                
-           
-                
+
+
+
+
             </ul>
         </div>
-        <div class="product_list_header">  
-                <form action="#" method="post" class="last"> 
+        <div class="product_list_header">
+                <form action="#" method="post" class="last">
                     <input type="hidden" name="cmd" value="_cart">
                     <input type="hidden" name="display" value="1">
                     <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                </form>  
+                </form>
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="w3ls_logo_products_left1">
             <ul class="phone_email">
                 <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
-                
+
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
@@ -50,7 +50,7 @@
             <div class="clearfix"></div>
         </form>
     </div>
-        
+
         <div class="clearfix"> </div>
     </div>
 </div>

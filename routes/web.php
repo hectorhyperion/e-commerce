@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class ,'index']);
-//view Route 
+//view Route
 Route::get('/Register', [PagesController::class, 'register'])->middleware('guest');
 Route::get('/Login', [PagesController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/Contact', [PagesController::class, 'contact'])->middleware('auth');
@@ -34,7 +34,7 @@ Route::post('/storeCategory/{id}', [AdminController::class, 'storeCategory'])->m
 
 //delete category
 Route::get('/category_delete/{id}', [AdminController::class, 'categoryDelete'])->middleware('auth');
-//storing data user auth data 
+//storing data user auth data
 Route::post('/store',[UserController::class, 'store']);
 Route::post('/verify', [UserController::class, 'verify']);
 Route::get('/logout',[UserController::class , 'logout'])->middleware('auth');
@@ -43,9 +43,13 @@ Route::get('/addProduct',[PagesController::class, 'addProduct'])->middleware('au
 Route::post('/productStore',[AdminController::class, 'productStore'])->middleware('auth');
 //show all product from db
 Route::get('/showProduct',[PagesController::class,'showProduct'])->middleware('auth');
-//Edit products 
+//Edit products
 Route::get('/product_edit/{id}',[PagesController::class,"editProduct"])->middleware('auth');
 //store edit product
 Route::post('/storeEditProducts/{id}',[AdminController::class,'storeEditProducts'])->middleware('auth');
 //delete product
 Route::get('/product_delete/{id}',[AdminController::class,'deleteProduct'])->middleware('auth');
+//passing product to view
+Route::get('/product', [PagesController::class, 'product']);
+Route::get('/product/listings/{id}', [PagesController::class, 'productlistings']);
+Route::get('/prodcut/category/{category_name}', [PagesController::class, 'navCategory']);
