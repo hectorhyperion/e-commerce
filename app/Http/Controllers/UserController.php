@@ -20,21 +20,22 @@ class UserController extends Controller
             'name' =>'required|min:3',
             'email' =>['required', 'email', Rule::unique('users','email')],
             'phone'=>'required',
+            'address'=>'required',
             'usertype'=>'required',
             'password' => 'required|confirmed|min:6|max:16'
-            
+
         ]);
         //hash password
         $data['password'] = bcrypt($data['password']);
         //setting admin and user login fucntion
-      
-        
+
+
         $user = User::create($data);
 
-        //login 
+        //login
         auth()->login($user);
 
-        return redirect('/')->with('message', 'User Created and logged in' ) ;    
+        return redirect('/')->with('message', 'User Created and logged in' ) ;
     }
     //user login function
     public function verify(Request $request)

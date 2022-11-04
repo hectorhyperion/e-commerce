@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Products;
@@ -24,6 +25,7 @@ class PagesController extends Controller
            $data= Category::all();
         return View('Index',compact('data'));
     }
+
     public function register(){
       if (User::where('usertype', '1')->exists())
       {
@@ -36,22 +38,27 @@ class PagesController extends Controller
 
               return view('verification.register', compact('user','data'));
         }
+
         public function login(){
                 $data= Category::all();
             return view('verification.login',compact('data'));
         }
+
          public function adminIndex(){
                       return view('admin/Index');
 
         }
+
         public function contact(){
             return view('users.contact');
         }
+
         public function dashboard(){
+
                     $data= Category::all();
                 return view('users.dashboard',compact('data'));
-
         }
+
         //show category
         public function category(){
 
@@ -103,5 +110,59 @@ public function navCategory($category_name)
             $query= Products::where('category',$category_name)->orderBy('created_at', 'asc')->paginate(10);
             return view('users.productCategory', compact('arr','data','query','title'));
 }
+public function addCart(Request $request, $id)
+{
+
+
+        if (Auth::id())
+         {
+                            $user =Auth::user();
+               $product = Products::find($id);
+
+
+  if($product->discount_price!=null)
+ {
+            $arr= $request->discount_price*$request->quantity;
+
+}
+else{
+    $arr=$request->price*$request->quantity;
+
+}
+                    $formField =([
+                                'user_name'=> $user->name,
+                                'email' =>$user->email,
+                                'phone'=>$user->phone,
+                                'address'=>$user->address,
+                                'user_id'=>$user->id,
+                                'product_title'=>$product->product_name,
+                                    'price'=>$arr,
+                                'product_id'=>$product->id,
+                                'image'=>$product->image,
+                                'quantity'=>$request->quantity
+
+                    ]);
+                        Cart::create($formField);
+                        return redirect()->back();
+        }
+        else{
+                return redirect('login');
+        }
+}
+//show cart
+public function showCart()
+{
+
+                 $id=Auth::user()->id;
+    $data   =Category::all();
+                 $arr = Cart::where('user_id','=', $id)->get();
+            return view('users.Cart',compact('data','arr'));
+}
+    public function RemoveCart($id)
+    {
+            $query= Cart::find($id);
+            $query->delete();
+                    return redirect()->back();
+    }
 }
 

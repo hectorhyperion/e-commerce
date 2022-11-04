@@ -1,40 +1,4 @@
-
-<!--banner-bottom-->
-<div class="ban-bottom-w3l">
-    <div class="container">
-    <div class="col-md-6 ban-bottom3">
-            <div class="ban-top">
-                <img src="{{url('assets/images/p2.jpg')}}" class="img-responsive" alt=""/>
-                
-            </div>
-            <div class="ban-img">
-                <div class=" ban-bottom1">
-                    <div class="ban-top">
-                        <img src="{{url('assets/images/p3.jpg')}}" class="img-responsive" alt=""/>
-                        
-                    </div>
-                </div>
-                <div class="ban-bottom2">
-                    <div class="ban-top">
-                        <img src="{{url('assets/images/p4.jpg')}}" class="img-responsive" alt=""/>
-                        
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="col-md-6 ban-bottom">
-            <div class="ban-top">
-                <img src="{{url('assets/images/111.jpg')}}" class="img-responsive" alt=""/>
-                
-                
-            </div>
-        </div>
-        
-        <div class="clearfix"></div>
-    </div>
-</div>
-<!--banner-bottom-->
+<div class="clearfix"></div>
 
 
 <!-- //footer -->
@@ -43,7 +7,7 @@
 <div class="w3_footer_grids">
 <div class="col-md-3 w3_footer_grid">
     <h3>Contact</h3>
-    
+
     <ul class="address">
         <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
         <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
@@ -52,7 +16,7 @@
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Information</h3>
-    <ul class="info"> 
+    <ul class="info">
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
@@ -62,7 +26,7 @@
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Category</h3>
-    <ul class="info"> 
+    <ul class="info">
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
@@ -72,7 +36,7 @@
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Profile</h3>
-    <ul class="info"> 
+    <ul class="info">
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
         <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
@@ -90,7 +54,7 @@
 </div>
 </div>
 
-</div>	
+</div>
 <div class="footer-botm">
 <div class="container">
 <div class="w3layouts-foot">
@@ -101,13 +65,13 @@
         <li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
     </ul>
 </div>
-<div class="payment-w3ls">	
+<div class="payment-w3ls">
     <img src="{{url('assets/images/card.png')}}" alt=" " class="img-responsive">
 </div>
 <div class="clearfix"> </div>
 </div>
 </div>
-<!-- //footer -->	
+<!-- //footer -->
 <!-- Bootstrap Core JavaScript -->
 <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
 
@@ -120,12 +84,12 @@ var defaults = {
 containerID: 'toTop', // fading element id
 containerHoverID: 'toTopHover', // fading element hover id
 scrollSpeed: 1200,
-easingType: 'linear' 
+easingType: 'linear'
 };
 */
-                
+
 $().UItoTop({ easingType: 'easeOutQuart' });
-                
+
 });
 </script>
 <!-- //here ends scrolling icon -->
@@ -146,11 +110,11 @@ paypal.minicart.reset();
 <script type="text/javascript">
 jQuery(document).ready(function(){
 jQuery('#demo1').skdslider({'delay':5000, 'animationSpeed': 2000,'showNextPrev':true,'showPlayButton':true,'autoSlide':true,'animationType':'fading'});
-        
+
 jQuery('#responsive').change(function(){
 $('#responsive_wrapper').width(jQuery(this).val());
 });
 
 });
-</script>	
-<!-- //main slider-banner --> 
+</script>
+<!-- //main slider-banner -->

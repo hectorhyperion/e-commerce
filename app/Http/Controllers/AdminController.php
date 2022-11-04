@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use log;
 use App\Models\Category;
+use App\Models\order;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class AdminController extends Controller
         $id->delete();
         return redirect()->back()->with('status', 'Category Deleted Sucessfully');
     }
-    //store category edit
+    //Update category
     public function storeCategory(Request $request, Category $id)
     {
         $data= $request->validate([
@@ -39,7 +40,7 @@ class AdminController extends Controller
             return redirect('/Category')->with('status', 'Category Deleted Sucessfully');
         }
     }
-    //adding product 
+    //adding product
     public function productStore(Request $request)
     {
                         $formFields = $request->validate([
@@ -55,12 +56,12 @@ class AdminController extends Controller
                         {
                        $formFields['image']=$request->file('image')->store('images', 'public');
                        }
-                       Products::insert($formFields);
+                       Products::Create($formFields);
                        return redirect()->back()->with('success', 'Product Added sucessfylly');
     }
-    //deleting product from databse 
+    //deleting product from databse
     public function deleteProduct(Products $id){
-         
+
             $id->delete();
             return redirect()->back()->with('product', 'Product deleted Sucessfully');
     }
@@ -78,11 +79,24 @@ class AdminController extends Controller
     if ($request->hasFile('image'))
     {
                 $formFields['image']=$request->file('image')->store('images', 'public');
-               
+
                  // $data->update($formFields);
-        }          
+        }
             $id->update($formFields);
             return redirect('/showProduct')->with('product', 'Product Updated sucessfully');
-  
+
+    }
+    public function userOrder(){
+            $data = order::orderBy('created_at', 'asc')->paginate(15);
+            return view('admin.viewOrder',compact('data'))->with('no',1);
+    }
+    public function deliver($id)
+    {
+            $data = order::find($id);
+            $data->delivery_status='delivered';
+            $data->payment_status='Paid';
+
+            $data->save();
+            return back();
     }
 }

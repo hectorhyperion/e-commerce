@@ -5,7 +5,7 @@
     <div class="alert alert-success">
         <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
         {{session()->get('success')}}
-       
+
     </div>
     @endif
     <div class="card card_border py-2 mb-4">
@@ -19,7 +19,7 @@
                             placeholder="Prodcut">
                             @error('product_name')
                             <p class="text-danger">{{$message}}</p>
-                                
+
                             @enderror
                     </div>
                     <div class="form-group col-md-6">
@@ -28,38 +28,38 @@
                             placeholder="Description" value="{{$data->description}}" name="description">
                             @error('description')
                             <p class="text-danger">{{$message}}</p>
-                                
+
                             @enderror
                     </div>
                 </div>
-               
+
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="Quantity" class="input__label">Quantity</label>
-                        <input type="number"   value="{{$data->quantity}}" class="form-control input-style" name="quantity" id="Quantity">
+                        <input type="number"min="1"   value="{{$data->quantity}}" class="form-control input-style" name="quantity" id="Quantity">
                         @error('quantity')
                         <p class="text-danger">{{$message}}</p>
-                            
+
                         @enderror
                     </div>
                     <div class="form-group col-md-4">
                         <label for="Price" class="input__label">Price </label>
-                        <input type="number" value="{{$data->price}}" class="form-control input-style" name="price" id="Price">
+                        <input type="number" min="1" value="{{$data->price}}" class="form-control input-style" name="price" id="Price">
                         @error('price')
                         <p class="text-danger">{{$message}}</p>
-                            
+
                         @enderror
                     </div>
                     <div class="form-group col-md-2">
                         <label for="discount_price" class="input__label">Discount Price</label>
-                        <input type="number"  name="discount_price" value="{{$data->discount_price}}" class="form-control input-style" id="discount_price">
+                        <input type="number" min="1"  name="discount_price" value="{{$data->discount_price}}" class="form-control input-style" id="discount_price">
                         @error('discount_price')
                         <p class="text-danger">{{$message}}</p>
-                            
+
                         @enderror
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="" class="input__label"> Select Category</label>
                     <select class="custom-select input-style"  name="category">
@@ -70,14 +70,14 @@
                                               @endforeach
                                               @else
                                               No Category Found
-                                              @endif              
+                                              @endif
                     </select>
                     @error('category')
                     <p class="text-danger">{{$message}}</p>
-                        
+
                     @enderror
                 </div>
- 
+
                         <div class="custom-file">
                     <input type="file" name="image" class="custom-file-input" id="validatedCustomFile" >
                     <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>

@@ -13,7 +13,12 @@
                         </div>
                         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="/" class="act">Home</a></li>
+                                @auth
+                                <li class="active"><a href="/users/dashboard" class="act">Home</a></li>
+                                    @else
+                                        <li class="active"><a href="/" class="act">Home</a></li>
+                                @endauth
+
                                 <!-- Mega Menu -->
                                 @if(count($data) > 0)
                                 @foreach ($data as $item)

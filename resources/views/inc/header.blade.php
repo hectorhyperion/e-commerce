@@ -20,11 +20,12 @@
             </ul>
         </div>
         <div class="product_list_header">
-                <form action="#" method="post" class="last">
-                    <input type="hidden" name="cmd" value="_cart">
-                    <input type="hidden" name="display" value="1">
-                    <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-                </form>
+            <ul>
+                  <a href="/show/Cart">
+             <i class="fa  fa-cart-arrow-down" aria-hidden="true"></i>Cart</a>
+            </ul>
+
+
         </div>
         <div class="clearfix"> </div>
     </div>
@@ -39,7 +40,13 @@
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
-            <h1><a href="/">super Market</a></h1>
+            <h1>
+                @auth
+                <a href="/users/dashboard">super Market</a>
+                @else
+                <a href="/">super Market</a>
+                @endauth
+            </h1>
         </div>
     <div class="w3l_search">
         <form action="#" method="post">

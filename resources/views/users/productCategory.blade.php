@@ -26,22 +26,8 @@
         <div class="col-md-8 products-right">
             <div class="products-right-grid">
                 <div class="products-right-grids">
-                    <div class="sorting">
-                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by price</option>
-                        </select>
-                    </div>
-                    <div class="sorting-left">
-                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 32</option>
-                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>All</option>
-                        </select>
-                    </div>
+
+
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -64,19 +50,16 @@
                                 <h4>${{$item->discount_price}} <span>${{$item->price}}</span></h4>
                             </div>
                             <div class="snipcart-details top_brand_home_details">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="{{$item->product_name}}">
-                                        <input type="hidden" name="amount" value="{{$item->price}}">
-                                        <input type="hidden" name="discount_amount" value="{{$item->discount_price}}">
+                                <form action="/addCart/{{$item->id}} " method="post">
+                                    @csrf
+                                        <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1" style="margin-bottom: 5px ;padding-right:0">
+                                        <input type="hidden" name="product_title" value="{{$item->product_name}}">
+                                        <input type="hidden" name="price" value="{{$item->price}}">
+                                        <input type="hidden" name="discount_price" value="{{$item->discount_price}}">
                                         <input type="hidden" name="currency_code" value="USD">
                                         <input type="hidden" name="return" value=" ">
                                         <input type="hidden" name="cancel_return" value=" ">
                                         <input type="submit" name="submit" value="Add to cart" class="button">
-                                    </fieldset>
                                 </form>
                             </div>
                         </div>

@@ -16,24 +16,29 @@
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<h4 class="m-sing">${{$arr->discount_price}} <span>${{$arr->price}}</span></h4>
+                            <h4>
+                                @if ($arr->discount_price!= null)
+                           ${{$arr->discount_price}}
+                      @else
+                      ${{$arr->price}}
+                          @endif
+
+                          @if($arr->discount_price == true)
+                               <span>${{$arr->price}}</span></h4>
+                               @endif
 						</div>
 						<div class="snipcart-details agileinfo_single_right_details">
-							<form action="#" method="post">
-                                <form action="#" method="post">
-                                    <fieldset>
-                                        <input type="hidden" name="cmd" value="_cart">
-                                        <input type="hidden" name="add" value="1">
-                                        <input type="hidden" name="business" value=" ">
-                                        <input type="hidden" name="item_name" value="{{$arr->product_name}}">
-                                        <input type="hidden" name="amount" value="{{$arr->price}}">
-                                        <input type="hidden" name="discount_amount" value="{{$arr->discount_price}}">
-                                        <input type="hidden" name="currency_code" value="USD">
-                                        <input type="hidden" name="return" value=" ">
-                                        <input type="hidden" name="cancel_return" value=" ">
-                                        <input type="submit" name="submit" value="Add to cart" class="button">
-								</fieldset>
-							</form>
+                            <form action="/addCart/{{$arr->id}} " method="post">
+                                @csrf
+                                    <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1" style="margin-bottom: 5px ;padding-right:0">
+                                    <input type="hidden" name="product_title" value="{{$arr->product_name}}">
+                                    <input type="hidden" name="price" value="{{$arr->price}}">
+                                    <input type="hidden" name="discount_price" value="{{$arr->discount_price}}">
+                                    <input type="hidden" name="currency_code" value="USD">
+                                    <input type="hidden" name="return" value=" ">
+                                    <input type="hidden" name="cancel_return" value=" ">
+                                    <input type="submit" name="submit" value="Add to cart" class="button">
+                            </form>
 						</div>
 					</div>
 				</div>
