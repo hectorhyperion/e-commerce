@@ -1,5 +1,5 @@
 <x-layouts>
-    
+
 @include('inc.navigation')
 <!-- //navigation -->
 <!-- breadcrumbs -->
@@ -18,9 +18,9 @@
 	<div class="login">
 		<div class="container">
 			<h2>Login Form</h2>
-		
+
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-			 
+
                 @error('errors')
                 <p class="alert alert-danger">
                    {{$message}}
@@ -36,15 +36,15 @@
                     @enderror
 					<div class="forgot">
 						<a href="#">Forgot Password?</a>
-					 
+
 					<input type="submit" value="Login">
-				</form>
+
 			</div>
 			<h4>For New People</h4>
 			<p><a href="/Register">Register Here</a> (Or) go back to <a href="/">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
 		</div>
 	</div>
 <!-- //login -->
-
+    </div>
 </form>
 </x-layouts>

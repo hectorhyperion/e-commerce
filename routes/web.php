@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,24 @@ Route::post('stripe/{totalprice}',[DashboardController::class ,'stripePost'])->n
 Route::get('/admin/order',[AdminController::class, 'userOrder'])->middleware('auth');
 //delivery status
 Route::get('/delivered/{id}', [AdminController::class,'deliver'])->middleware('auth');
+//print pdf
+Route::get('/printpdf{id}', [AdminController::class, 'printpdf'])->middleware('auth');
+//verfication
+Route::group(['middleware'=>['auth']],function(){
+    /**
+     * verfication Routes
+     */
+    Route::get('/email/verify',[VerificationController::class,'show'])->name('verification.notice');
+    Route::get('/emai/verify/{id}/{hash}', [VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend',[VerificationController::class, 'resend'])->name('verification.resend');
+    });
+    //only authenticated can access this group
+    Route::group(['middleware' => ['auth']], function() {
+        //only verified account can access with this group
+        Route::group(['middleware' => ['verified']], function() {
+                /**
+                 * Dashboard Routes
+                 */
+                Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('users.dashboard');
+        });
+    });

@@ -44,29 +44,21 @@
                             @foreach ($user as $user)
                                   <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
-
                           </select>
                           @error('usertype')
                           <div class="alert text-danger">{{$message}}</div>
                             @enderror
-
                         <input type="password" placeholder="Password" name="password">
                         @error('password')
                         <div class="alert text-danger">{{$message}}</div>
                           @enderror
-
-
-
                         <input type="password" placeholder="confirm_password" name="password_confirmation">
-
                         @error('  password_confirmation')
                         <div class="alert text-danger">{{$message}}</div>
                           @enderror
-
                         <input type="submit" value="Login">
-
                 </div>
-                <h4>For New People</h4>
+                <h4>For Old People</h4>
                 <p><a href="/Login">Login Here</a> (Or) go back to <a href="/">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
             </div>
         </div>

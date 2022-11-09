@@ -23,6 +23,7 @@
                 <th>Delivery Status</th>
                 <th>Image</th>
                 <th>Action</th>
+                <th>Print PDF</th>
             </tr>
 
 
@@ -36,11 +37,11 @@
             <td>{{$item->address}}</td>
             <td>{{$item->phone}}</td>
             <td>{{$item->product_name}}</td>
-            <td>{{$item->price}}</td>
+            <td>${{$item->price}}</td>
             <td>{{$item->quantity}}</td>
             <td>{{$item->payment_status}}</td>
             <td>{{$item->delivery_status}}</td>
-            <td>   <img id="example" src="{{$item->image ? asset('storage/'.$item->image): asset('images/no-image.jpg')}}" alt=" " class="img-responsive" height="150px" width="150px"></td>
+            <td>   <img id="example" src="{{$item->image ? asset('storage/'.$item->image): asset('images/no-image.jpg')}}" alt=" " class="img-responsive" height="100px" width="300px"></td>
             <td>
                 @if($item->delivery_status =='Processing')
                 <a href="/delivered/{{$item->id}}" onclick="return confirm('Are You Sure This Product Is Delivered')" class="btn btn-secondary">Delivered</a>
@@ -48,6 +49,7 @@
                 <p class="text-center  " style="color: green"> Delivered</p>
                 @endif
             </td>
+            <td> <a href="/printpdf{{$item->id}}" class=' btn btn-primary'>Print pdf</a></td>
                  </tr>
 
                  @endforeach

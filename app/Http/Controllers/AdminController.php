@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\order;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use PDF;
 
 
 class AdminController extends Controller
@@ -86,10 +87,12 @@ class AdminController extends Controller
             return redirect('/showProduct')->with('product', 'Product Updated sucessfully');
 
     }
+    //show order
     public function userOrder(){
             $data = order::orderBy('created_at', 'asc')->paginate(15);
             return view('admin.viewOrder',compact('data'))->with('no',1);
     }
+    //update delivery status
     public function deliver($id)
     {
             $data = order::find($id);
@@ -99,4 +102,11 @@ class AdminController extends Controller
             $data->save();
             return back();
     }
+    public function printpdf($id)
+    {
+        $order = order::find($id);
+            $pdf = PDF::loadView('admin.pdf',compact('order'));
+            return $pdf->download('order_details.pdf');
+    }
+
 }

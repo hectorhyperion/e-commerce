@@ -52,7 +52,7 @@ class PagesController extends Controller
         public function contact(){
             return view('users.contact');
         }
-
+//user view
         public function dashboard(){
 
                     $data= Category::all();

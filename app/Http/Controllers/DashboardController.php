@@ -50,6 +50,7 @@ class DashboardController extends Controller
                 return redirect()->back()->with('status', 'Order placed Sucessfully');
 
     }
+    //payment method
     public function payWithCard($totalprice)
     {
 
