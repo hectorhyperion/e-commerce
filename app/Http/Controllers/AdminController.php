@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use log;
-use App\Models\Category;
+use PDF;
 use App\Models\order;
+use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
-use PDF;
+use App\Http\Controllers\Controller;
+use App\Notifications\OrderNotification;
+use Illuminate\Support\Facades\Notification;
+
 
 
 class AdminController extends Controller
@@ -107,6 +111,26 @@ class AdminController extends Controller
         $order = order::find($id);
             $pdf = PDF::loadView('admin.pdf',compact('order'));
             return $pdf->download('order_details.pdf');
+    }
+    //send email
+    public function sendEmail($id)
+    {
+        $order = order::find($id);
+                return view('admin.emailInfo', compact('order'));
+    }
+    public function sendUserEmail(Request $request, $id)
+    {
+            $data = order::find($id);
+            $details =[
+                'gretting' =>$request->gretting,
+                'firstline' =>$request->firstline,
+                'body' =>$request->body,
+                'button' =>$request->button,
+                'url' =>$request->url,
+                'lastline' =>$request->lastline
+            ];
+            Notification::send($data, new OrderNotification($details));
+            return redirect('/admin/order')->with('product', 'Mail Sent Sucessfully');
     }
 
 }

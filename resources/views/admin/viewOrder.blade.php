@@ -24,13 +24,14 @@
                 <th>Image</th>
                 <th>Action</th>
                 <th>Print PDF</th>
+                <th>Send Email</th>
             </tr>
 
 
                 @if (count($data) > 0)
 
                     @foreach ($data as $item)
-                <tr class="table-dark">
+                <tr class="table-dark fit" >
                 <td>{{$no++}}</td>
             <td>{{$item->user_name}}</td>
             <td>{{$item->email}}</td>
@@ -50,7 +51,11 @@
                 @endif
             </td>
             <td> <a href="/printpdf{{$item->id}}" class=' btn btn-primary'>Print pdf</a></td>
+               <td>
+                <a href="/SendEmail{{$item->id}}" class="btn btn-info">Send Mail</a>
+               </td>
                  </tr>
+
 
                  @endforeach
 

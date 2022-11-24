@@ -61,7 +61,7 @@ class PagesController extends Controller
 
         //show category
         public function category(){
-
+                $data= Category::all();
             return view('admin.view-category', compact('data'))->with('no',1);
         }
         //show category edit page

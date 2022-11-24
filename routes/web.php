@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VerificationController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +74,10 @@ Route::get('/admin/order',[AdminController::class, 'userOrder'])->middleware('au
 Route::get('/delivered/{id}', [AdminController::class,'deliver'])->middleware('auth');
 //print pdf
 Route::get('/printpdf{id}', [AdminController::class, 'printpdf'])->middleware('auth');
+//send email
+Route::get('/SendEmail{id}', [AdminController::class, 'sendEmail'])->Middleware('auth');
+//send user notification
+Route::post('sendUserEmail{id}', [AdminController::class, 'sendUserEmail'])->middleware('auth');
 //verfication
 Route::group(['middleware'=>['auth']],function(){
     /**
