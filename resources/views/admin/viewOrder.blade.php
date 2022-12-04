@@ -1,6 +1,19 @@
 <x-admin-layouts>
 <h1 class="jumbotron text-center">Pending Order</h1>
 
+<form action="/admin/order" method="GET">
+        <!-- notification menu start -->
+        <div class="menu-right">
+          <div class="navbar user-panel-top">
+            <div class="search-box">
+
+                <input class="search-input" placeholder="Search Here..." type="text" name="search" id="search">
+                <button class="search-submit" value=""><span class="fa fa-search"></span></button>
+
+            </div>
+              </div>
+            </div>
+  </form>
 @if (session()->has('product'))
 <div class="alert alert-success">
     <button class="close" data-dismiss="alert" aria-hidden="true">x</button>

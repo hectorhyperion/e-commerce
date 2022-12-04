@@ -11,11 +11,20 @@ class Category extends Model
     use HasFactory;
     protected $fillable = [
         'category_name',
-        
+
     ];
     public function products()
     {
         return $this->hasMany(Products::class, 'category');
+    }
+    public function scopeFilter($query, array $filters)
+    {
+
+     if($filters['search'] ?? false)
+     {
+            $query->where('category_name', 'like','%'.request('search'). '%' );
+
+     }
     }
 }
 

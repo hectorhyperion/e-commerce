@@ -61,7 +61,7 @@ class PagesController extends Controller
 
         //show category
         public function category(){
-                $data= Category::all();
+                $data= Category::filter(request(['search']))->paginate(10);
             return view('admin.view-category', compact('data'))->with('no',1);
         }
         //show category edit page
@@ -78,7 +78,7 @@ class PagesController extends Controller
         //show product page
         public function showProduct()
         {
-            $data = Products::orderBy('created_at', 'asc')->paginate(15);
+            $data = Products::orderBy('created_at', 'asc')->filter(request(['search']))->paginate(15);
             return view('admin.showProduct',compact('data'))->with('no', 1);
         }
         public function editProduct($id )

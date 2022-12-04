@@ -4,7 +4,7 @@
 <div class="alert alert-success">
     <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
     {{session()->get('status')}}
-   
+
 </div>
 @endif
 <div class="card card_border py-2 mb-4">
@@ -18,14 +18,27 @@
                 <label for="exampleInputEmail1" class="input__label">Category</label>
                 <input type="text" class="form-control input-style" id="exampleInputEmail1" placeholder="Enter Category" name="category_name">
                 @error('category_name')
-              <p class="text-danger"> {{$message}}</p>    
+              <p class="text-danger"> {{$message}}</p>
                 @enderror
             </div>
-            
+
             <button type="submit" class="btn btn-primary btn-style mt-4 ">Submit</button>
         </form>
     </div>
 </div>
+<form action="/Category" method="GET">
+    <!-- notification menu start -->
+    <div class="menu-right">
+      <div class="navbar user-panel-top">
+        <div class="search-box">
+
+            <input class="search-input" placeholder="Search Here..." type="text" name="search" id="search">
+            <button class="search-submit" value=""><span class="fa fa-search"></span></button>
+
+        </div>
+          </div>
+        </div>
+</form>
 
 <div class="card card_border py-2 mb-4">
     <div class="cards__heading">
@@ -35,8 +48,8 @@
                 <th>Category Name</th>
                 <th>Action</th>
             </tr>
-          
-              
+
+
                 @if (count($data) > 0)
 
                     @foreach ($data as $item)
@@ -51,14 +64,10 @@
             <tr>
                 <td> <span style="text-transform: capitalize"> no data found</span>  </td>
             </tr>
-                 
+
                 @endif
-            
-           
         </table>
+        {{$data->links()}}
     </div>
 </div>
-
-
-
 </x-admin-layouts>

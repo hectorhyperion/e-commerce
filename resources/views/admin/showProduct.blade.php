@@ -7,6 +7,19 @@
     {{session()->get('product')}}
 </div>
 @endif
+<form action="/showProduct" method="GET">
+    <!-- notification menu start -->
+    <div class="menu-right">
+      <div class="navbar user-panel-top">
+        <div class="search-box">
+
+            <input class="search-input" placeholder="Search Here..." type="text" name="search" id="search">
+            <button class="search-submit" value=""><span class="fa fa-search"></span></button>
+
+        </div>
+          </div>
+        </div>
+</form>
 <div class="card card_border py-2 mb-4">
     <div class="cards__heading">
         <table class="table table-hover shadow-lg p-3 mb-5 bg-body rounded">
@@ -21,14 +34,14 @@
                 <th>image</th>
                 <th>Action</th>
             </tr>
-          
-              
+
+
                 @if (count($data) > 0)
 
                     @foreach ($data as $item)
                 <tr class="table-dark">
                 <td>{{$no++}}</td>
-            <td>{{$item->Product_name}}</td>
+            <td>{{$item->product_name}}</td>
             <td>{{$item->description}}</td>
             <td>{{$item->quantity}}</td>
             <td>{{$item->price}}</td>
@@ -43,12 +56,12 @@
             <tr>
                 <td> <span style="text-transform: capitalize"> no data found</span>  </td>
             </tr>
-                 
+
                 @endif
-            
-           
+
+
         </table>
-        
+
         <div class="mt-6 p-4">
             {{$data->links()}}
         </div>

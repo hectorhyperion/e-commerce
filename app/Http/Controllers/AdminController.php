@@ -93,7 +93,8 @@ class AdminController extends Controller
     }
     //show order
     public function userOrder(){
-            $data = order::orderBy('created_at', 'asc')->paginate(15);
+            $data = order::orderBy('created_at', 'asc')->filter(request(['search']))->paginate(15);
+
             return view('admin.viewOrder',compact('data'))->with('no',1);
     }
     //update delivery status
@@ -131,6 +132,13 @@ class AdminController extends Controller
             ];
             Notification::send($data, new OrderNotification($details));
             return redirect('/admin/order')->with('product', 'Mail Sent Sucessfully');
+    }
+//db search
+    public function search( Request $request)
+    {
+            $searchh=$request->search;
+            $data=order::where('user_name', 'LIKE', "%$searchh")->paginate();
+            return view('admin.viewOrder',compact('data'))->with('no', 1);
     }
 
 }

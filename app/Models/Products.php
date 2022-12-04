@@ -17,11 +17,23 @@ class Products extends Model
         'price',
         'discount_price',
         'product_name'
-        
+
     ];
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class ,'category');
+    }
+    public function scopeFilter($query, array $filters)
+    {
+
+     if($filters['search'] ?? false)
+     {
+            $query->where('product_name', 'like','%'.request('search'). '%' )
+            ->orWhere('category', 'like','%'.request('search'). '%' )
+            ->orWhere('description', 'like','%'.request('search'). '%' )
+            ->orWhere('price', 'like','%'.request('search'). '%' ) ;
+
+     }
     }
 }

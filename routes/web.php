@@ -97,3 +97,5 @@ Route::group(['middleware'=>['auth']],function(){
                 Route::get('/dashboard', [PagesController::class, 'dashboard'])->name('users.dashboard');
         });
     });
+    //search
+    Route::get('/search', [AdminController::class, 'search'])->middleware('auth');
