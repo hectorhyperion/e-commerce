@@ -8,7 +8,8 @@
               <ul>
             @auth
           <li><a href="/Contact">Help</a></li>
-          <li><a href="/logout">Logout  </a></li>
+          <li><a href="/logout">Logout <i class="fa fa-key"></i> </a></li>
+          <li><a href="/showUserOrder">Order</a></li>
                 @else
                 <li><a href="/Register"> Create Account </a></li>
                 <li><a href="/Login">Login</a></li>

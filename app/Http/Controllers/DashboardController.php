@@ -103,5 +103,23 @@ class DashboardController extends Controller
 
         return back();
     }
-
+        public function showUserOrder()
+        {
+            if (Auth::id()) {
+                $user= Auth::user();
+                $userid=$user->id;
+                $data= order::where('user_id', '=' ,$userid)->paginate(10);
+                return view ('users.order',compact('data'))->with('no',1);
+            }
+            else {
+                    return redirect('login');
+            }
+        }
+        public function cancelOrder($id)
+        {
+            $arr = order::find($id);
+                $arr->delivery_status ='Your Order Has Been Cancelled';
+                $arr->save();
+                return back();
+        }
 }

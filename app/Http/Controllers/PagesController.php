@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\order;
 use App\Models\Products;
 use App\Models\UserTypes;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
-
+//home page
     public function index()
     {
         if(Auth::id())
@@ -25,7 +26,7 @@ class PagesController extends Controller
            $data= Category::all();
         return View('Index',compact('data'));
     }
-
+//sign up page
     public function register(){
       if (User::where('usertype', '1')->exists())
       {
@@ -38,14 +39,25 @@ class PagesController extends Controller
 
               return view('verification.register', compact('user','data'));
         }
-
+//login page
         public function login(){
                 $data= Category::all();
             return view('verification.login',compact('data'));
         }
-
+//admin view
          public function adminIndex(){
-                      return view('admin/Index');
+            $total_product= Products::all()->count();
+            $total_users=User::all()->count();
+            $total_order= order::all()->count();
+            $order= order::all();
+            $total_revenue= 0;
+                    foreach ($order as  $order) {
+                         $total_revenue= $total_revenue + $order->price;
+                    }
+                    $total_delivered =order::where('delivery_status', '=', 'delivered')->get()->count();
+                    $total_processing =order::where('delivery_status', '=', 'processing')->get()->count();
+
+                      return view('admin/Index', compact('total_product', 'total_users', 'total_order', 'total_revenue','total_delivered', 'total_processing'));
 
         }
 

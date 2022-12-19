@@ -7,6 +7,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VerificationController;
 use GuzzleHttp\Middleware;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,6 @@ Route::group(['middleware'=>['auth']],function(){
     });
     //search
     Route::get('/search', [AdminController::class, 'search'])->middleware('auth');
+    //show user order
+    Route::get('/showUserOrder',[DashboardController::class, 'showUserOrder'])->middleware('auth');
+    Route::get('/cancelOrder/{id}',[DashboardController::class , 'cancelOrder'])->middleware('auth');
