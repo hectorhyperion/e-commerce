@@ -103,3 +103,6 @@ Route::group(['middleware'=>['auth']],function(){
     //show user order
     Route::get('/showUserOrder',[DashboardController::class, 'showUserOrder'])->middleware('auth');
     Route::get('/cancelOrder/{id}',[DashboardController::class , 'cancelOrder'])->middleware('auth');
+//add comments
+Route::post('/comment', [DashboardController::class, 'comment'])->middleware('auth');
+Route::post('/replyComment', [DashboardController::class, 'replyComment'])->middleware('auth');

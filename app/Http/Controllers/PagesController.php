@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\order;
 use App\Models\Products;
+use App\Models\Reply;
 use App\Models\UserTypes;
 use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
@@ -24,7 +26,8 @@ class PagesController extends Controller
         }
         //passing product to view
            $data= Category::all();
-        return View('Index',compact('data'));
+           $comment =Comment::all();
+        return View('Index',compact('data','comment'));
     }
 //sign up page
     public function register(){
@@ -67,8 +70,10 @@ class PagesController extends Controller
 //user view
         public function dashboard(){
 
-                    $data= Category::all();
-                return view('users.dashboard',compact('data'));
+                $data= Category::all();
+                $comment= Comment::all();
+                $reply = Reply::orderBy('created_at', 'desc')->get();
+                return view('users.dashboard',compact('data','comment','reply'));
         }
 
         //show category

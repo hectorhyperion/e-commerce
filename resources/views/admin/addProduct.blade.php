@@ -55,7 +55,6 @@
                         <input type="number" min="1"   name="discount_price" class="form-control input-style" id="discount_price">
                         @error('discount_price')
                         <p class="text-danger">{{$message}}</p>
-
                         @enderror
                     </div>
                 </div>

@@ -1,13 +1,13 @@
 <x-layouts>
 
 	@include('inc.navigation')
-	@if (session()->has('message'))
-<div class="alert alert-success">
+    @if (session()->has('success'))
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        {{session()->get('success')}}
 
-    {{session()->get('message')}}
-
-</div>
-@endif
+    </div>
+    @endif
 	<x-main/>
 
 	<x-_top />
@@ -16,4 +16,5 @@
 
 <x-_carousel/>
 @include('inc.bottombanner')
+@include('inc._comments')
 </x-layouts>
