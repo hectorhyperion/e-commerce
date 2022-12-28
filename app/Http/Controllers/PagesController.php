@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Stripe\Product;
 
 class PagesController extends Controller
 {
@@ -27,6 +28,7 @@ class PagesController extends Controller
         //passing product to view
            $data= Category::all();
            $comment =Comment::all();
+         //  $arr= Products::filter(request(['search']))->paginate(15);
         return View('Index',compact('data','comment'));
     }
 //sign up page
@@ -71,7 +73,7 @@ class PagesController extends Controller
         public function dashboard(){
 
                 $data= Category::all();
-                $comment= Comment::all();
+                $comment= Comment::paginate(10);
                 $reply = Reply::orderBy('created_at', 'desc')->get();
                 return view('users.dashboard',compact('data','comment','reply'));
         }
@@ -92,12 +94,13 @@ class PagesController extends Controller
             $data = Category::all();
             return view('admin.addProduct',compact('data'));
         }
-        //show product page
+        //admin show product page
         public function showProduct()
         {
             $data = Products::orderBy('created_at', 'asc')->filter(request(['search']))->paginate(15);
             return view('admin.showProduct',compact('data'))->with('no', 1);
         }
+        //admin edit products
         public function editProduct($id )
         {
             $data= Products::find($id);
@@ -108,7 +111,7 @@ class PagesController extends Controller
         public function product()
         {
             $data= Category::all();
-                    $arr=Products::orderBy('created_at', 'asc')->paginate(10);
+              $arr=Products::orderBy('created_at', 'asc')->filter(request(['search']))->paginate(10);
 
                     return view('users.product',compact('arr', 'data'));
         }

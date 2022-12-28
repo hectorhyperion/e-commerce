@@ -25,7 +25,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/1.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/1.png')}}" /></a>
                                                         <p>Tata-salt</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -68,7 +68,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/2.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/2.png')}}" /></a>
                                                         <p>Fortune-sunflower</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -157,7 +157,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/4.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/4.png')}}" /></a>
                                                         <p>Sampann-toor-dal</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -200,7 +200,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/5.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/5.png')}}" /></a>
                                                         <p>Parryss-sugar</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -298,7 +298,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/7.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/7.png')}}" /></a>
                                                         <p>Sona-masoori-rice</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -341,7 +341,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/8.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/8.png')}}" /></a>
                                                         <p>Milky-mist-paneer</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -433,7 +433,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/10.png')}}"/></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/10.png')}}"/></a>
                                                         <p>Fortune-sunflower</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>
@@ -476,7 +476,7 @@
                                             <figure>
                                                 <div class="snipcart-item block" >
                                                     <div class="snipcart-thumb">
-                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/12.png')}}" /></a>		
+                                                        <a href="products.html"><img title=" " alt=" " src="{{url('assets/images/12.png')}}" /></a>
                                                         <p>Nestle-a-slim</p>
                                                         <div class="stars">
                                                             <i class="fa fa-star blue-star" aria-hidden="true"></i>

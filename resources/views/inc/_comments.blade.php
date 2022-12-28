@@ -87,17 +87,10 @@
         </div>
 </form>
     <a href="javascript:viod(0);" class="btn btn-danger" id="btn" onclick="reply_close(this)">close</a>
-
-
-
-
 </div>
 
-
-
-
-
 </div>
+{{$comment->links()}}
 
 <script type="text/javascript">
 function reply(caller)
