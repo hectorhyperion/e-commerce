@@ -9,7 +9,8 @@
             @auth
           <li><a href="/Contact">Help</a></li>
           <li><a href="/showUserOrder">Order</a></li>
-          <li><a href="/logout">Logout <i class="fa fa-key"></i> </a></li>
+          <li><a href="/logout">Logout  <i class="fa fa-power-off"></i></a></li>
+          <li><a href="/changePassword">Change Password <i class="fa fa-key"></i></a></li>
 
                 @else
                 <li><a href="/Register"> Create Account </a></li>
@@ -37,7 +38,7 @@
     <div class="container">
     <div class="w3ls_logo_products_left1">
             <ul class="phone_email">
-                <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
+                <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us :  (+234) 9038087107</li>
 
             </ul>
         </div>

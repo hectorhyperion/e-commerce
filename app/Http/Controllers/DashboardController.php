@@ -10,8 +10,11 @@ use App\Models\order;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Reply;
+use App\Models\User;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -155,5 +158,38 @@ class DashboardController extends Controller
                     Reply::Create($formfields);
                  return back()->with('comment', 'comment Sent Sucessfully');
         }
+
+        public function UpdatePassword(Request $request)
+        {
+            //basic validation
+                $formfields= $request->validate([
+                    'oldpassword' => 'required',
+                    'password' => 'required|min:6|max:20',
+                ]);
+                //get password from database
+                    $getpassword = auth()->user()->password;
+
+                //check if current password match
+            if (Hash::check($request->oldpassword, $getpassword)) {
+                    //save new password
+                User::whereId(auth()->user()->id)->update([
+                    'password' => Hash::make($request->password)
+                ]);
+                        return back()->with('change_password', 'Password Changed sucessfully');
+                    }
+
+                    else{
+                            return back()->with('change_password', 'The old password dosent match your old password');
+                    }
+
+
+             /*
+                $harsh=bcrypt($request->password);
+                    if(bcrypt($request->oldpassword, auth()->user()->password)){
+                        return back()->with("error", "Old Password Dosen't match!");
+                    } */
+                 //   User::whereId(auth()->user()->id)->update(['password' =>Hash::make($harsh)]);
+        }
+
 }
 

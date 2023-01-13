@@ -106,3 +106,7 @@ Route::group(['middleware'=>['auth']],function(){
 //add comments
 Route::post('/comment', [DashboardController::class, 'comment'])->middleware('auth');
 Route::post('/replyComment', [DashboardController::class, 'replyComment'])->middleware('auth');
+//change password
+Route::get('/changePassword', [PagesController:: class ,'changePassword'])->middleware('auth');
+//update password
+Route::post('/UpdatePassword', [DashboardController::class, 'UpdatePassword'])->middleware('auth');

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use log;
 use App\Models\User;
+use App\Models\UserTypes;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserTypes;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Exists;
-use log;
 
 
 class UserController extends Controller
@@ -23,10 +24,9 @@ class UserController extends Controller
             'address'=>'required',
             'usertype'=>'required',
             'password' => 'required|confirmed|min:6|max:16'
-
         ]);
         //hash password
-        $data['password'] = bcrypt($data['password']);
+        $data['password'] =Hash::make($data['password']);
         //setting admin and user login fucntion
 
 

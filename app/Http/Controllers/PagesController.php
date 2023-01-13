@@ -132,12 +132,35 @@ public function navCategory($category_name)
 }
 public function addCart(Request $request, $id)
 {
-
-
         if (Auth::id())
          {
                             $user =Auth::user();
+                            $userid=$user->id;
                $product = Products::find($id);
+                    //increasing product quantity in cart
+                $product_exist_id=Cart::where('product_id', '=', $id)->where('user_id', '=', $userid)->get('id')->first();
+
+                //checking product
+                if($product_exist_id !=null)
+                {
+                    //finding item in cart
+                         $cart = Cart::find($product_exist_id)->first();
+                         $quantity=$cart->quantity;
+                         $cart->quantity=$quantity+ $request->quantity;
+                         //changing ammount base on quantity
+                         if($product->discount_price!=null)
+        {
+            $cart->price= $request->discount_price*$cart->quantity;
+
+        }
+else{
+    $cart->price=$request->price*$cart->quantity;
+
+}
+                        $cart->save();
+                         return back()->with('message', 'Item Added Sucessfully');
+                }
+
 
 
   if($product->discount_price!=null)
@@ -163,7 +186,7 @@ else{
 
                     ]);
                         Cart::create($formField);
-                        return redirect()->back();
+                        return back()->with('message', 'Item Added Sucessfully');
         }
         else{
                 return redirect('login');
@@ -183,6 +206,11 @@ public function showCart()
             $query= Cart::find($id);
             $query->delete();
                     return redirect()->back();
+    }
+    public function changePassword()
+    {
+        $data = Category::all();
+            return view('verification.changePassword', compact('data'));
     }
 }
 

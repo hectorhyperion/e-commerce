@@ -48,7 +48,7 @@
       </div>
 
       <p class="center"> ${{$totalprice}}</p>
-<div>
+<div class="margin">
     @if (count($arr) > 0)
   <h1>Place Order</h1>
         <a href="/cashOrder" class="btn btn-danger">Pay On Delivery</a>
