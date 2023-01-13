@@ -212,5 +212,10 @@ public function showCart()
         $data = Category::all();
             return view('verification.changePassword', compact('data'));
     }
+    public function forgotpassword()
+    {
+        $data = Category::all();
+        return view('verification.forgotpassword', compact('data'));
+    }
 }
 

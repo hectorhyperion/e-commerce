@@ -9,8 +9,9 @@
             @auth
           <li><a href="/Contact">Help</a></li>
           <li><a href="/showUserOrder">Order</a></li>
-          <li><a href="/logout">Logout  <i class="fa fa-power-off"></i></a></li>
           <li><a href="/changePassword">Change Password <i class="fa fa-key"></i></a></li>
+          <li><a href="/logout">Logout  <i class="fa fa-power-off"></i></a></li>
+
 
                 @else
                 <li><a href="/Register"> Create Account </a></li>

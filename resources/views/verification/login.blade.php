@@ -20,6 +20,12 @@
 			<h2>Login Form</h2>
 
 			<div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+                @if (session()->has('status'))
+                <div class="alert alert-success">
+                    <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                    {{session()->get('status')}}
+                </div>
+                    @endif
 
                 @error('errors')
                 <p class="alert alert-danger">
@@ -35,7 +41,7 @@
                         <div class="text text-danger">{{$message}}</div>
                     @enderror
 					<div class="forgot">
-						<a href="#">Forgot Password?</a>
+						<a href="/forgotpassword">Forgot Password?</a>
 
 					<input type="submit" value="Login">
 
