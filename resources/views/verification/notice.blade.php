@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
     <div class="container-fluid position-relative d-flex p-0">
         <div class="bg-light p-5 rounded">
             <h1>Dashboard</h1>

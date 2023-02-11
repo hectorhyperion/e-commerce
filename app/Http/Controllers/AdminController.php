@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\todaysoffers;
 use App\Notifications\OrderNotification;
 use Illuminate\Support\Facades\Notification;
 
@@ -53,7 +54,7 @@ class AdminController extends Controller
                                 'description'=>'required|min:50',
                                 'quantity'=>'required',
                                 'price' =>'required',
-                                'discount_price'=>'required',
+
                                 'image'=>'required',
                                 'category' =>'required',
                         ]);
@@ -62,7 +63,7 @@ class AdminController extends Controller
                        $formFields['image']=$request->file('image')->store('images', 'public');
                        }
                        Products::Create($formFields);
-                       return redirect()->back()->with('success', 'Product Added sucessfylly');
+                       return redirect()->back()->with('success', 'Product Added sucessfully');
     }
     //deleting product from databse
     public function deleteProduct(Products $id){
@@ -78,7 +79,6 @@ class AdminController extends Controller
             'description'=>'required|min:50',
             'quantity'=>'required',
             'price' =>'required',
-            'discount_price'=>'required',
             'category' =>'required',
     ]);
     if ($request->hasFile('image'))
@@ -139,6 +139,24 @@ class AdminController extends Controller
             $searchh=$request->search;
             $data=order::where('user_name', 'LIKE', "%$searchh")->paginate();
             return view('admin.viewOrder',compact('data'))->with('no', 1);
+    }
+    public function todayoffer(Request $request)
+    {
+        $formFields = $request->validate([
+            'product_name'=>'required|min:2',
+            'description'=>'required|min:50',
+            'quantity'=>'required',
+            'price' =>'required',
+
+            'image'=>'required'
+
+    ]);
+    if ($request->hasFile('image'))
+    {
+   $formFields['image']=$request->file('image')->store('images', 'public');
+   }
+todaysoffers::Create($formFields);
+   return redirect()->back()->with('success', 'Product Added sucessfully');
     }
 
 }

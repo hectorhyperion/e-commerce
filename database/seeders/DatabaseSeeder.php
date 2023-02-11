@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Products;
 use App\Models\UserTypes;
 use Illuminate\Database\Seeder;
 
@@ -28,5 +29,7 @@ class DatabaseSeeder extends Seeder
         UserTypes::create([
             'name' =>'user',
         ]);
+
+     //  \App\Models\Products::factory(20)->create();
     }
 }

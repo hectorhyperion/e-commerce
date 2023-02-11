@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use log;
 use Stripe;
 use Session;
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\order;
+use App\Models\Reply;
 use App\Models\Comment;
 use App\Models\Category;
-use App\Models\Reply;
-use App\Models\User;
-use Illuminate\Auth\Events\Failed;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
 {
@@ -183,12 +185,26 @@ class DashboardController extends Controller
                     }
 
 
-             /*
-                $harsh=bcrypt($request->password);
-                    if(bcrypt($request->oldpassword, auth()->user()->password)){
-                        return back()->with("error", "Old Password Dosen't match!");
-                    } */
-                 //   User::whereId(auth()->user()->id)->update(['password' =>Hash::make($harsh)]);
+
+        }
+        public function contactus(Request $request)
+        {
+                $formfields = $request->validate([
+                    'name'=>'required',
+                    'email' =>'required|email',
+                    'message'=>'required',
+                    'head'=>'required'
+        ]);
+            $this->sendmail($formfields);
+            return back()->with('message', 'Mail Sent Sucessfully our Tech team will review your mail soon ');
+
+
+
+        }
+        public function sendmail($formfields)
+        {
+                Mail::to('agimqwertyakomaye@gmail.com')->send(new Contact($formfields));
+                return back()->with('message', 'A Password Reset Link Has Been Sent To Your Email');
         }
 
 }

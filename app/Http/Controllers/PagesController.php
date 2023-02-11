@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\order;
 use App\Models\Products;
 use App\Models\Reply;
+use App\Models\todaysoffers;
 use App\Models\UserTypes;
 use Illuminate\Http\Request;
 use Spatie\FlareClient\View;
@@ -28,8 +29,9 @@ class PagesController extends Controller
         //passing product to view
            $data= Category::all();
            $comment =Comment::all();
+           $todaysoffers = Products::inRandomOrder()->limit(5)->get();
          //  $arr= Products::filter(request(['search']))->paginate(15);
-        return View('Index',compact('data','comment'));
+        return View('Index',compact('data','comment','todaysoffers'));
     }
 //sign up page
     public function register(){
@@ -52,7 +54,7 @@ class PagesController extends Controller
 //admin view
          public function adminIndex(){
             $total_product= Products::all()->count();
-            $total_users=User::all()->count();
+            $total_users=User::where('usertype' , '=' , '2')->count();
             $total_order= order::all()->count();
             $order= order::all();
             $total_revenue= 0;
@@ -67,7 +69,8 @@ class PagesController extends Controller
         }
 
         public function contact(){
-            return view('users.contact');
+            $data= Category::all();
+            return view('users.contact', compact('data'));
         }
 //user view
         public function dashboard(){
@@ -75,7 +78,8 @@ class PagesController extends Controller
                 $data= Category::all();
                 $comment= Comment::paginate(10);
                 $reply = Reply::orderBy('created_at', 'desc')->get();
-                return view('users.dashboard',compact('data','comment','reply'));
+                $todaysoffers= Products::inRandomOrder()->limit(5)->get();
+                return view('users.dashboard',compact('data','comment','reply','todaysoffers'));
         }
 
         //show category
@@ -217,5 +221,10 @@ public function showCart()
         $data = Category::all();
         return view('verification.forgotpassword', compact('data'));
     }
+    public function todayoffers()
+    {
+            return view('admin.todaysoffers');
+    }
+
 }
 

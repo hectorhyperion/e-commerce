@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
 @include('inc.navigation')
 <div class="breadcrumbs">
     <div class="container">

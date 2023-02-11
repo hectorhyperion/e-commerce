@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use App\Models\UserTypes;
 
 class VerificationController extends Controller
 {
@@ -18,13 +20,14 @@ class VerificationController extends Controller
     | be re-sent if the user didn't receive the original email message.
     |
     */
-    use VerifiesEmails, RedirectsUsers;
+ use VerifiesEmails, RedirectsUsers;
 
     /**
      * Where to redirect Users After Verification
      * @var string
      *
      */
+
     protected $redirectTo='/dashboard';
     /**
      * Create a new controller instance
@@ -45,7 +48,8 @@ class VerificationController extends Controller
      */
     public function show(Request $request)
     {
+        $data= Category::all();
         return $request->user()->hasVerifiedEmail()?
-        redirect($this->redirectPath()):view('verification.notice',['pageTitle'=> __('Accoutn Verification')]);
+        redirect($this->redirectPath()):view('verification.notice',['pageTitle'=> __('Accoutn Verification')], compact('data'));
     }
 }

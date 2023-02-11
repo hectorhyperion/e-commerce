@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
 
     <form action="/updatepassword/{{$token}}" method="POST">
         <!-- login -->
@@ -8,7 +8,14 @@
                 <h2>Reset Password ?</h2>
 
                 <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-  @error('errors')
+                    @if (session()->has('status'))
+                    <div class="alert alert-danger">
+                        <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        {{session()->get('status')}}
+
+                    </div>
+                    @endif
+                  @error('errors')
                <p class="text-danger">{{$message}}</p>
                     @enderror
                         <input type="email" placeholder="Email Address" name="email" >

@@ -1,11 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Error;
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Category;
+use App\Mail\PasswordReset;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
 
 class PasswordRestController extends Controller
 {
@@ -13,45 +22,52 @@ class PasswordRestController extends Controller
     public function resetPassword(Request $request)
     {
         //checking if email exist
-        $request->validate(['email' => 'required|email']);
-        //sending password reset link to one email
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-        //returning errors or success message
-        return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-    }
+        $formfields=    $request->validate(['email' => 'required|email|exists:users']);
 
-    public function passwordreset($token)
-    {
-        //sending link from mail to view
-        return view('verification.reset-password', ['token' => $token]);
-    }
-    public function passwordupdate(Request $request, $token)
-    {
-        //handlling password submit form
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:6|confirmed',
-        ]);
-        //reseting password and updating users tables
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
+        //generating random string
+        $token= Str::random(100);
 
-                $user->save();
-                event(new PasswordReset($user));
-            }
-        );
-        //returning error of success message
-        return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['errors' => [__($status)]]);
-    }
+        //finding user email first
+          $user = User::where('email', $formfields)->firstOrfail();
+          //sending email if user email exist
+
+        $this->sendmail($user, $token);
+
+        //checking if user has already requesting token
+        $userExists = DB::table('password_resets')->where('email', '=', $request->input('email'))->exists();
+
+
+                //expire token
+            $date=  now()->addminutes(15);
+
+
+        if ($userExists) {
+            //updating data if user already exist
+            DB::table('password_resets')->update(['token' => $token, 'destroy_at' =>$date]);
+        }
+
+        else {
+
+            //create new user token a
+            DB::table('password_resets')->insert(['email' =>$request->email, 'token' => $token, 'created_at' => Carbon::now(),'destroy_at' =>$date ]);
+        }
+
+
+            return back()->with('message', 'A Password Reset Link Has Been Sent To Your Email');
+
+        }
+
+        public function sendmail($user, $token)
+        {
+                Mail::to($user)->send(new PasswordReset($token,$user));
+                return back()->with('message', 'A Password Reset Link Has Been Sent To Your Email');
+        }
+
+        public function reset( $token)
+        {
+
+
+            $data = Category::all();
+                return view('verification.reset-password', ['token' => $token], compact('data'));
+        }
 }

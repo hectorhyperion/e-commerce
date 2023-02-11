@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
 
 	@include('inc.navigation')
     @if (session()->has('comment'))
@@ -17,7 +17,8 @@
     @endif
 	<x-main/>
 
-	<x-_top />
+    @include('inc._top')
+
 
 	<!-- //top-header and slider -->
 

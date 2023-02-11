@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
 
     @include('inc.navigation')
     <!-- //navigation -->
@@ -23,10 +23,11 @@
                         @error('email')
                   <p class="text-danger">{{$message}}</p>
                         @enderror
-                        @if (session()->has('status'))
+                        @if (session()->has('message'))
             <div class="alert alert-success">
                 <button class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                {{session()->get('status')}}
+                {{session()->get('message')}}
+            </div>
                 @endif
                         <input type="email" placeholder="Email Address" name="email" >
                         @error('email')

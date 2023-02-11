@@ -38,6 +38,7 @@
           </li>
           <li><a href="/Category"><i class="fa fa-table"></i> <span>Category</span></a></li>
           <li><a href="/admin/order"><i class="fa fa-book"></i> <span>Orders</span></a></li>
+          <li><a href="/admin/todayoffers"><i class="fa fa-gift"></i> <span>Todays Offers</span></a></li>
 
           <li class="logout"> <a href="/logout"><i class="fa fa-power-off"></i><span>Logout</span> </a> </li>
         </ul>

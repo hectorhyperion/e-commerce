@@ -1,6 +1,5 @@
+
 <div class="clearfix"></div>
-
-
 <!-- //footer -->
 <div class="footer">
 <div class="container">
@@ -10,37 +9,40 @@
 
     <ul class="address">
         <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>1234k Avenue, 4th block, <span>New York City.</span></li>
-        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 567</li>
+        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:agimqwertyakomaye@gmail.com">agimqwertyakomaye@gmail.com</a></li>
+        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><a href="tel:2349038087108" > +234 9038087108</a></li>
     </ul>
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Information</h3>
     <ul class="info">
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.html">About Us</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.html">Contact Us</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="short-codes.html">Short Codes</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.html">FAQ's</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Special Products</a></li>
+
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Contact">Contact Us</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">Short Codes</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="#">FAQ's</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/product">Special Products</a></li>
     </ul>
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Category</h3>
     <ul class="info">
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
+        @if(count($data) > 0)
+        @foreach ($data as $item)
+
+
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{$item->category_name}}">{{$item->category_name}}</a></li>
+@endforeach
+@else
+@endif
     </ul>
 </div>
 <div class="col-md-3 w3_footer_grid">
     <h3>Profile</h3>
     <ul class="info">
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="products.html">Store</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="checkout.html">My Cart</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.html">Login</a></li>
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.html">Create Account</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/product">Store</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/show/Cart">My Cart</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Login">Login</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/Register">Create Account</a></li>
     </ul>
 </div>
 <div class="clearfix"> </div>
@@ -50,7 +52,7 @@
 <div class="footer-copy">
 
 <div class="container">
-<p>© 2017 Super Market. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+<p>© 2022 Super Market. All rights reserved | Design by <a href="/">E-commerce</a></p>
 </div>
 </div>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PasswordRestController;
+use App\Http\Controllers\RecoveryController;
 use App\Http\Controllers\VerificationController;
 use GuzzleHttp\Middleware;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -111,10 +112,20 @@ Route::post('/replyComment', [DashboardController::class, 'replyComment'])->midd
 Route::get('/changePassword', [PagesController:: class ,'changePassword'])->middleware('auth');
 //update password
 Route::post('/UpdatePassword', [DashboardController::class, 'UpdatePassword'])->middleware('auth');
+
 //forgot password
 Route::get('/forgotpassword', [PagesController::class, 'forgotpassword'])->middleware('guest');
 //rest password links
 Route::post('/passwordReset', [PasswordRestController::class, 'resetPassword'])->middleware('guest');
+
 //passing token to view
-Route::get('/reset-password/{token}',[PasswordRestController::class, 'passwordreset'])->middleware('guest')->name('password.reset');
-Route::post('/updatepassword/{token}',[PasswordRestController::class, 'passwordupdate'])->middleware('guest')->name('password.update');
+Route::get('/reset-password/{token}',[PasswordRestController::class, 'reset'])->middleware('guest');
+//saving new password
+Route::post('/updatepassword/{token}',[RecoveryController::class, 'passwordupdate'])->middleware('guest') ;
+//todays offers
+Route::get('/admin/todayoffers', [PagesController::class, 'todayoffers'])->middleware('auth');
+//sending data to table
+Route::post('/admin/todayoffer', [AdminController::class, 'todayoffer'])->middleware('auth');
+//send contact mail
+Route::post('/contactus',[DashboardController::class, 'contactus'])->middleware('auth');
+

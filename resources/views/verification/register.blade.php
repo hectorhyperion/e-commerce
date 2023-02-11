@@ -1,4 +1,4 @@
-<x-layouts>
+<x-layouts :$data>
 
     @include('inc.navigation')
     <!-- //navigation -->
@@ -56,7 +56,7 @@
                         @error('  password_confirmation')
                         <div class="alert text-danger">{{$message}}</div>
                           @enderror
-                        <input type="submit" value="Login">
+                        <input type="submit" value="Sign up">
                 </div>
                 <h4>For Old People</h4>
                 <p><a href="/Login">Login Here</a> (Or) go back to <a href="/">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
