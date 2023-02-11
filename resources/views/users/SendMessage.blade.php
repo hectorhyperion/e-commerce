@@ -334,7 +334,7 @@ ul.social li{
                         <td>
 
                             <div class="text" style="padding: 0 2.5em; text-align: center; color: #000; font-size:20px; margin-bottom: 0; font-weight:400; line-height: 1.4;">
-                                <img src="" height="24" alt="logo">
+                                <a href="/"><img src="{{ $message->embed('../public/assets/images/logo.png')}}" height="24" alt="{{config('app.name')}}" /></a>
                                 <H1 class="logo">Received A Mail</H1>
 
                                 <h2 style="font-family: perpetual;  color: #000000; font-weight: 400;">From  {{$formfields['name']}}</h2>

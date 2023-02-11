@@ -3,11 +3,12 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class Contact extends Mailable
 {
@@ -32,6 +33,10 @@ public $formfields;
     public function envelope()
     {
         return new Envelope(
+            from: new Address($this->formfields['email'], $this->formfields['name']),
+            replyTo: [
+                new Address($this->formfields['email'], $this->formfields['name']),
+            ],
             subject:$this->formfields['head'],
         );
     }
@@ -44,6 +49,7 @@ public $formfields;
     public function content()
     {
         return new Content(
+
             view: 'users.SendMessage',
             with:$this->formfields
         );
