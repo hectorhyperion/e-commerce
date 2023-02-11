@@ -331,7 +331,7 @@ ul.social li{
                         <td>
                             <div class="text" style="padding: 0 2.5em; text-align: center; color: #000; font-size:20px; margin-bottom: 0; font-weight:400; line-height: 1.4;">
 
-                                <img src="{{asset('images/logo.png')}}" height="24" alt="{{config('app.name')}}" />
+                               <a href="/"><img src="{{ $message->embed('../public/assets/images/logo.png')}}" height="24" alt="{{config('app.name')}}" /></a>
                                 <h2 style="font-family: perpetual;  color: #000000; font-weight: 400;">HI  {{$user->name}}</h2>
                                 <h3 style="font-family:  perpetual; color: #000000; margin-top: 0; font-weight: 400;"> We received a request for a Password change on your E-commerce account. You can reset the Password via the button This Email is Valid for 15 minute only</h3>
                                 <a href="{{ url('reset-password/'.$token) }}">
