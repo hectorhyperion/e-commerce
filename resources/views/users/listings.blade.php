@@ -30,7 +30,7 @@
 						<div class="snipcart-details agileinfo_single_right_details">
                             <form action="/addCart/{{$arr->id}} " method="post">
                                 @csrf
-                                    <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1" style="margin-bottom: 5px ;padding-right:0">
+                                    <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1"  max="{{$arr->quantity}}"style="margin-bottom: 5px ;padding-right:0">
                                     <input type="hidden" name="product_title" value="{{$arr->product_name}}">
                                     <input type="hidden" name="price" value="{{$arr->price}}">
                                     <input type="hidden" name="discount_price" value="{{$arr->discount_price}}">

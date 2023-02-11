@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Contact;
 use log;
 use Stripe;
 use Session;
 use App\Models\Cart;
 use App\Models\User;
+use App\Mail\Contact;
 use App\Models\order;
 use App\Models\Reply;
 use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -52,7 +53,7 @@ class DashboardController extends Controller
             $cart= Cart::find($_id);
             $cart->delete();
         }
-
+ DB::table('products')->where('product_name', $order->product_title)->decrement('quantity', $order->quantity);
         return redirect()->back()->with('status', 'Order placed Sucessfully');
     }
     //payment method
@@ -105,8 +106,9 @@ class DashboardController extends Controller
 
 
         Session::flash('success', 'Payment successful!');
+        DB::table('products')->where('product_name', $order->product_title)->decrement('quantity', $order->quantity);
+        return redirect()->back()->with('status', 'Order placed Sucessfully');
 
-        return back();
     }
     //show user order
         public function showUserOrder()
@@ -160,7 +162,7 @@ class DashboardController extends Controller
                     Reply::Create($formfields);
                  return back()->with('comment', 'comment Sent Sucessfully');
         }
-
+//resetting password
         public function UpdatePassword(Request $request)
         {
             //basic validation
@@ -187,6 +189,7 @@ class DashboardController extends Controller
 
 
         }
+        //send complain to admins
         public function contactus(Request $request)
         {
                 $formfields = $request->validate([

@@ -52,7 +52,7 @@
                             <div class="snipcart-details top_brand_home_details">
                                 <form action="/addCart/{{$item->id}} " method="post">
                                     @csrf
-                                        <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1" style="margin-bottom: 5px ;padding-right:0">
+                                        <input type="number" class="col-md-6 text-center" name="quantity" value="1" min="1"  max="{{$item->quantity}}" style="margin-bottom: 5px ;padding-right:0">
                                         <input type="hidden" name="product_title" value="{{$item->product_name}}">
                                         <input type="hidden" name="price" value="{{$item->price}}">
                                         <input type="hidden" name="discount_price" value="{{$item->discount_price}}">

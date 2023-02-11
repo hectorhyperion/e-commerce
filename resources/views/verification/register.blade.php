@@ -42,7 +42,7 @@
                       <select name="usertype" id="" class="login-form-grid">
                             <option value="">Select Account Type</option>
                             @foreach ($user as $user)
-                                  <option value="{{$user->id}}">{{$user->name}}</option>
+                                  <option value="{{$user->name}}">{{$user->name}}</option>
                             @endforeach
                           </select>
                           @error('usertype')

@@ -35,7 +35,7 @@ class PagesController extends Controller
     }
 //sign up page
     public function register(){
-      if (User::where('usertype', '1')->exists())
+      if (User::where('usertype', 'admin')->exists())
       {
             $user= UserTypes::where('id', 2)->get();
       }
@@ -53,8 +53,14 @@ class PagesController extends Controller
         }
 //admin view
          public function adminIndex(){
+            if (Auth::user()->usertype=='admin') {
+
+            }
+            else{
+                return redirect('/logout');
+            }
             $total_product= Products::all()->count();
-            $total_users=User::where('usertype' , '=' , '2')->count();
+            $total_users=User::where('usertype' , '=' , 'user')->count();
             $total_order= order::all()->count();
             $order= order::all();
             $total_revenue= 0;
@@ -74,7 +80,12 @@ class PagesController extends Controller
         }
 //user view
         public function dashboard(){
+                if (Auth::user()->usertype=='user') {
 
+                }
+                else{
+                    return redirect('/logout');
+                }
                 $data= Category::all();
                 $comment= Comment::paginate(10);
                 $reply = Reply::orderBy('created_at', 'desc')->get();

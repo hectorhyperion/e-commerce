@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use App\Models\UserTypes;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class VerificationController extends Controller
 {

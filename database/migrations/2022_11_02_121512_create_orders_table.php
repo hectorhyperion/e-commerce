@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('quantity');
             $table->string('price');
             $table->string('product_id');
-
+            $table->string('image');
             $table->string('payment_status')->nullable();
             $table->string('delivery_status')->nullable();
             $table->timestamps();

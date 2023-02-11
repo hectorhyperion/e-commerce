@@ -47,7 +47,7 @@ class UserController extends Controller
         if (auth()->attempt($data)) {
             $request->session()->regenerate();
             if (Auth::id()) {
-                if(Auth::user()->usertype=='1')
+                if(Auth::user()->usertype=='admin')
                 {
                    return redirect('admin/Index');
                 }

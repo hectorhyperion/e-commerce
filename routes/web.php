@@ -65,7 +65,7 @@ Route::post('/addCart/{id}', [PagesController::class, 'addCart'])->middleware('a
 //showing cart
 Route::get('/show/Cart', [PagesController::class, 'showCart'])->middleware('auth');
 Route::get('/remove/cart/{id}',[PagesController::class, 'RemoveCart'])->middleware('auth');
-//payment method
+//payment method paywith cash
 Route::get('/cashOrder', [DashboardController::class,'cashOrder'])->middleware('auth');
 //pay using stripe method
 Route::get('/payWithCard/{totalprice}', [DashboardController::class, 'payWithCard'])->middleware('auth');
