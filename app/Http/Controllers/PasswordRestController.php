@@ -38,7 +38,7 @@ class PasswordRestController extends Controller
 
 
                 //expire token
-            $date=  now()->addminutes(1);
+            $date=  now()->addminutes(15);
 
 
         if ($userExists) {
