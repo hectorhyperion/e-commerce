@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use log;
 use Stripe;
-use Session;
 use App\Models\Cart;
 use App\Models\User;
 use App\Mail\Contact;
@@ -18,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
@@ -59,7 +59,8 @@ class DashboardController extends Controller
     //payment method
     public function payWithCard($totalprice)
     {
-        return view('users.payWithCard', compact('totalprice'));
+                $data = Category::all();
+        return view('users.payWithCard', compact('totalprice', 'data'));
     }
 
     //payment method  for users
@@ -185,9 +186,6 @@ class DashboardController extends Controller
                     else{
                             return back()->with('change_password', 'The old password dosent match your old password');
                     }
-
-
-
         }
         //send complain to admins
         public function contactus(Request $request)
@@ -200,9 +198,6 @@ class DashboardController extends Controller
         ]);
             $this->sendmail($formfields);
             return back()->with('message', 'Mail Sent Sucessfully our Tech team will review your mail soon ');
-
-
-
         }
         public function sendmail($formfields)
         {

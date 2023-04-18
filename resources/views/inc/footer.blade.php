@@ -30,7 +30,7 @@
         @foreach ($data as $item)
 
 
-        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="{{$item->category_name}}">{{$item->category_name}}</a></li>
+        <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="/prodcut/category/{{$item->category_name}}">{{$item->category_name}}</a></li>
 @endforeach
 @else
 @endif
