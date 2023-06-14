@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use log;
 use Stripe;
 use App\Models\Cart;
@@ -97,19 +95,14 @@ class DashboardController extends Controller
             $arr->image= $order->image;
             $arr->payment_status='paid';
             $arr->delivery_status='Processing';
-
             $arr->save();
-
             $_id=$order->id;
             $cart= Cart::find($_id);
             $cart->delete();
         }
-
-
         Session::flash('success', 'Payment successful!');
         DB::table('products')->where('product_name', $order->product_title)->decrement('quantity', $order->quantity);
         return redirect()->back()->with('status', 'Order placed Sucessfully');
-
     }
     //show user order
         public function showUserOrder()
@@ -134,8 +127,7 @@ class DashboardController extends Controller
 //show comments
         public function comment(Request  $request)
         {
-
-                $formfields = $request->validate([
+                            $formfields = $request->validate([
                             'name' => 'required',
                             'comment'=>'required|min:3'
                 ]);
@@ -182,7 +174,6 @@ class DashboardController extends Controller
                 ]);
                         return back()->with('change_password', 'Password Changed sucessfully');
                     }
-
                     else{
                             return back()->with('change_password', 'The old password dosent match your old password');
                     }

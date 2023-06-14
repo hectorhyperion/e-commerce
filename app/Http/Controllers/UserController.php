@@ -28,13 +28,9 @@ class UserController extends Controller
         //hash password
         $data['password'] =Hash::make($data['password']);
         //setting admin and user login fucntion
-
-
         $user = User::create($data);
-
         //login
         auth()->login($user);
-
         return redirect('/')->with('message', 'User Created and logged in' ) ;
     }
     //user login function
